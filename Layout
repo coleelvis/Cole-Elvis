@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MusicBeeLayout>
+  <!--
+  This is a refined MusicBee layout attempting to provide a Spotify-like panel arrangement.
+  It's designed with clear sections for navigation, main content, search, and playback.
+
+  Key features:
+  - Dedicated left sidebar for Library and Playlists.
+  - Large central area for browsing your music collection.
+  - Top bar for search and menu.
+  - Bottom bar for player controls and now playing information.
+  -->
+
+  <!-- Top-level horizontal split: Top Bar (Search/Menu) vs. Main Body -->
+  <split type="horizontal" splitProportion="0.05">
+    <!-- Top Bar Area -->
+    <split type="vertical" splitProportion="0.7">
+      <panel type="SearchBar" dock="fill" />
+      <panel type="MenuBar" dock="fill" />
+    </split>
+    <!-- Placeholder for any other top-right elements if desired -->
+    <panel type="placeholder" dock="fill" />
+  </split>
+
+  <!-- Main Body Area: Contains Left Sidebar and Main Content -->
+  <split type="horizontal" splitProportion="0.95">
+    <!-- Vertical split for Main Body: Main Content vs. Bottom Player/Now Playing -->
+    <split type="vertical" splitProportion="0.9">
+      <!-- Main Content Area: Left Sidebar vs. Central Music View -->
+      <split type="horizontal" splitProportion="0.18">
+        <!-- Left Sidebar: For Library Navigation and Playlists -->
+        <split type="horizontal" splitProportion="0.5">
+          <!-- Top part of sidebar: Navigator (Library, Inbox, etc.) -->
+          <panel type="Navigator" dock="fill" />
+          <!-- Bottom part of sidebar: Playlist Explorer (Your Playlists) -->
+          <panel type="PlaylistExplorer" dock="fill" />
+        </split>
+
+        <!-- Central Music Display Area -->
+        <panel type="ContentPanel" dock="fill" />
+      </split>
+
+      <!-- Bottom Player and Now Playing Area (below Main Content, above Player Controls) -->
+      <panel type="NowPlaying" dock="fill" />
+    </split>
+
+    <!-- Bottom Bar Area: Player Controls -->
+    <panel type="PlayerControls" dock="fill" />
+  </split>
+
+  <!--
+  Default view for the ContentPanel. This specifies what you see in the main browsing area
+  when the layout is first loaded. You can change this within MusicBee (View > Main Panel)
+  after applying the layout.
+  -->
+  <ContentPanelLayoutType>AlbumCovers</ContentPanelLayoutType>
+
+  <!--
+  Panel Visibility and Ordering:
+  You can specify which panels are visible by default and their order here,
+  though the 'dock' attribute in the split structure usually dictates initial placement.
+  -->
+  <visiblePanels>
+    <panelType>Navigator</panelType>
+    <panelType>PlaylistExplorer</panelType>
+    <panelType>ContentPanel</panelType>
+    <panelType>SearchBar</panelType>
+    <panelType>MenuBar</panelType>
+    <panelType>PlayerControls</panelType>
+    <panelType>NowPlaying</panelType>
+  </visiblePanels>
+
+</MusicBeeLayout>

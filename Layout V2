@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    MusicBee Spotify-like Layout Configuration
+    This file attempts to mimic the structure of the Spotify UI using MusicBee's layout capabilities.
+    It defines panels for navigation (sidebar), main content, and a bottom player.
+    Note: MusicBee's rendering is different from a web browser, so this is an approximation.
+-->
+<Layout>
+  <GUI>
+    <!-- Assuming a dark skin is used in MusicBee settings for a Spotify-like look -->
+    <GUISkin>Dark</GUISkin>
+    <TabStyle>Default</TabStyle>
+    <ShowNowPlayingAssistant>False</ShowNowPlayingAssistant>
+  </GUI>
+  <Borders>
+    <Left>True</Left>
+    <Top>True</Top>
+    <Right>True</Right>
+    <Bottom>True</Bottom>
+  </Borders>
+
+  <!-- Left Sidebar Panel - Mimics Spotify's left navigation.
+       We set TopPanel height to 0 to allow the Navigator to span most of the height. -->
+  <TopPanel>
+    <Height>0</Height>
+    <Panels />
+  </TopPanel>
+
+  <!-- Navigator Panel - The core of the left sidebar mimicking Spotify's navigation -->
+  <Navigator>
+    <Width>250</Width> <!-- Similar to the 250px width of the HTML sidebar -->
+    <Panels>
+      <Panel>
+        <Name>Navigation</Name>
+        <Dock>Fill</Dock>
+        <ShowHeader>False</ShowHeader>
+        <ShowBorders>False</ShowBorders>
+        <Elements>
+          <Element>
+            <Type>Navigator</Type>
+            <Dock>Fill</Dock>
+            <Default>Music Library</Default>
+            <Panels>
+              <Panel>
+                <Name>Music Library</Name>
+                <Elements>
+                  <Element>
+                    <Type>NavigatorPanel</Type>
+                    <Dock>Fill</Dock>
+                    <NavigatorType>MusicLibrary</NavigatorType>
+                    <Fields>
+                      <Field>Genre</Field>
+                      <Field>Artist</Field>
+                      <Field>Album</Field>
+                    </Fields>
+                    <SortColumns>
+                      <SortColumn>Genre</SortColumn>
+                    </SortColumns>
+                  </Element>
+                </Elements>
+              </Panel>
+              <Panel>
+                <Name>Playlists</Name>
+                <Elements>
+                  <Element>
+                    <Type>NavigatorPanel</Type>
+                    <Dock>Fill</Dock>
+                    <NavigatorType>Playlists</NavigatorType>
+                    <Fields>
+                      <Field>Playlist Name</Field>
+                      <Field>Tracks</Field>
+                    </Fields>
+                    <SortColumns>
+                      <SortColumn>Playlist Name</SortColumn>
+                    </SortColumns>
+                  </Element>
+                </Elements>
+              </Panel>
+              <Panel>
+                <Name>Artists</Name>
+                <Elements>
+                  <Element>
+                    <Type>NavigatorPanel</Type>
+                    <Dock>Fill</Dock>
+                    <NavigatorType>Artists</NavigatorType>
+                    <Fields>
+                      <Field>Artist Name</Field>
+                      <Field>Albums</Field>
+                    </Fields>
+                    <SortColumns>
+                      <SortColumn>Artist Name</SortColumn>
+                    </SortColumns>
+                  </Element>
+                </Elements>
+              </Panel>
+              <Panel>
+                <Name>Albums</Name>
+                <Elements>
+                  <Element>
+                    <Type>NavigatorPanel</Type>
+                    <Dock>Fill</Dock>
+                    <NavigatorType>Albums</NavigatorType>
+                    <Fields>
+                      <Field>Album Name</Field>
+                      <Field>Artist</Field>
+                    </Fields>
+                    <SortColumns>
+                      <SortColumn>Album Name</SortColumn>
+                    </SortColumns>
+                  </Element>
+                </Elements>
+              </Panel>
+              <Panel>
+                <Name>Podcasts</Name>
+                <Elements>
+                  <Element>
+                    <Type>NavigatorPanel</Type>
+                    <Dock>Fill</Dock>
+                    <NavigatorType>Podcasts</NavigatorType>
+                  </Element>
+                </Elements>
+              </Panel>
+              <Panel>
+                <Name>Search Results</Name>
+                <Elements>
+                  <Element>
+                    <Type>NavigatorPanel</Type>
+                    <Dock>Fill</Dock>
+                    <NavigatorType>SearchResults</NavigatorType>
+                  </Element>
+                </Elements>
+              </Panel>
+            </Panels>
+          </Element>
+        </Elements>
+      </Panel>
+    </Panels>
+  </Navigator>
+
+  <!-- Main Content Area - This will be the primary browser/artwork view -->
+  <MainPanel>
+    <ShowHeader>False</ShowHeader>
+    <ShowBorders>False</ShowBorders>
+    <Panels>
+      <Panel>
+        <Name>Main Browser View</Name>
+        <Dock>Fill</Dock>
+        <Elements>
+          <Element>
+            <Type>Browser</Type>
+            <Dock>Fill</Dock>
+            <BrowserType>AlbumAndTracks</BrowserType> <!-- Or other types like Artist, Tracks, etc. -->
+            <ArtworkPanelPosition>Left</ArtworkPanelPosition>
+            <ShowFilter>True</ShowFilter>
+            <ShowGrouping>True</ShowGrouping>
+            <ShowStatusbar>False</ShowStatusbar>
+            <Fields>
+              <!-- Example fields you might see in a Spotify-like main content area -->
+              <Field>Album Artwork</Field>
+              <Field>Track Title</Field>
+              <Field>Artist</Field>
+              <Field>Album</Field>
+              <Field>Duration</Field>
+              <Field>Date Added</Field>
+            </Fields>
+            <SortColumns>
+              <SortColumn>Date Added</SortColumn>
+              <SortColumn>Album</SortColumn>
+            </SortColumns>
+            <Grouping>
+              <GroupByType>Album</GroupByType>
+            </Grouping>
+          </Element>
+        </Elements>
+      </Panel>
+    </Panels>
+  </MainPanel>
+
+  <!-- Bottom Panel - For the 'Now Playing' bar, similar to Spotify's footer -->
+  <BottomPanel>
+    <Height>80</Height>
+    <Panels>
+      <Panel>
+        <Name>Player Controls</Name>
+        <Dock>Fill</Dock> <!-- Use Fill here as it's the only panel in BottomPanel -->
+        <AutoHeight>False</AutoHeight>
+        <ShowHeader>False</ShowHeader>
+        <ShowBorders>False</ShowBorders>
+        <Elements>
+          <!-- This is where MusicBee's actual player controls and progress bar would be rendered -->
+          <Element>
+            <Type>PlaybackControls</Type>
+            <Dock>Fill</Dock>
+          </Element>
+        </Elements>
+      </Panel>
+    </Panels>
+  </BottomPanel>
+
+  <FloatingPanels />
+  <CompactPanel />
+
+  <!-- Other global settings like subscriptions, compact player, etc. -->
+  <Subscriptions>
+    <ShowAlbumOnly>False</ShowAlbumOnly>
+    <MaxItems>0</MaxItems>
+  </Subscriptions>
+  <CompactPlayer>
+    <ShowArtwork>True</ShowArtwork>
+    <MiniPlayerLayout>Default</MiniPlayerLayout>
+  </CompactPlayer>
+  <FormPlayer>
+    <ArtworkSize>Medium</ArtworkSize>
+  </FormPlayer>
+</Layout>
